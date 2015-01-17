@@ -5,12 +5,10 @@ import java.net.URI;
 public class Player {
     private final String name;
     private final int id;
-    private final URI uri;
 
-    public Player(String name, int id, URI uri) {
+    public Player(String name, int id) {
         this.name = name;
         this.id = id;
-        this.uri = uri;
     }
 
     public String getName() {

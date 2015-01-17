@@ -5,17 +5,18 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
 @Produces(MediaType.APPLICATION_JSON)
 public class GameResource {
 
     private final Game game;
-    private final URI uri;
+    private final UriInfo uriInfo;
 
-    public GameResource(Game game, URI uri) {
+    public GameResource(Game game, UriInfo uriInfo) {
         this.game = game;
-        this.uri = uri;
+        this.uriInfo = uriInfo;
     }
 
     @GET
@@ -26,7 +27,7 @@ public class GameResource {
 
     @Path("players")
     public PlayersResource getPlayers() {
-        return new PlayersResource(game.getPlayers(), UriBuilder.fromUri(uri).path("players").build());
+        return new PlayersResource(game.getPlayers(), uriInfo);
     }
 
     @Path("moves")
@@ -34,4 +35,7 @@ public class GameResource {
         return new MovesResource(game);
     }
 
+    public URI getUri() {
+        return uriInfo.getAbsolutePathBuilder().path(Integer.toString(game.getId())).build();
+    }
 }

@@ -6,6 +6,9 @@ public class Move {
     private int column;
     private String mark;
 
+    protected Move() {
+    }
+
     public Move(int row, int column, String mark) {
         this.row = row;
         this.column = column;

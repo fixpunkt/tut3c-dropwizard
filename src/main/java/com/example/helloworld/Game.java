@@ -1,5 +1,7 @@
 package com.example.helloworld;
 
+import javax.ws.rs.core.UriInfo;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
