@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package tut3c.dropwizard;
 
 import com.codahale.metrics.health.HealthCheck;
 

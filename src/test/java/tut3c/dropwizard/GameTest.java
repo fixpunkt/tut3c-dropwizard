@@ -1,7 +1,9 @@
-package com.example.helloworld;
+package tut3c.dropwizard;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import tut3c.dropwizard.model.Cell;
+import tut3c.dropwizard.model.Game;
 
 public class GameTest {
 	@Test

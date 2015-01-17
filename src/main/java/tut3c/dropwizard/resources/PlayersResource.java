@@ -1,9 +1,10 @@
-package com.example.helloworld;
+package tut3c.dropwizard.resources;
+
+import tut3c.dropwizard.model.Player;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;

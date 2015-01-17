@@ -1,4 +1,6 @@
-package com.example.helloworld;
+package tut3c.dropwizard.resources;
+
+import tut3c.dropwizard.model.Player;
 
 import javax.ws.rs.GET;
 

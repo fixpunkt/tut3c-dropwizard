@@ -1,6 +1,7 @@
-package com.example.helloworld;
+package tut3c.dropwizard;
 
 import com.google.common.base.Charsets;
+import tut3c.dropwizard.model.Game;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
@@ -11,7 +12,6 @@ import javax.ws.rs.ext.Provider;
 import java.io.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-import java.nio.charset.Charset;
 
 @Provider
 @Produces("text/plain")

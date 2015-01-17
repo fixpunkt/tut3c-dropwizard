@@ -1,4 +1,8 @@
-package com.example.helloworld;
+package tut3c.dropwizard.resources;
+
+import tut3c.dropwizard.model.Cell;
+import tut3c.dropwizard.model.Game;
+import tut3c.dropwizard.model.Move;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.core.Response;

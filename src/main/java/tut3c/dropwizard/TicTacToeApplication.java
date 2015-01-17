@@ -1,10 +1,12 @@
-package com.example.helloworld;
+package tut3c.dropwizard;
 
 import io.dropwizard.Application;
+import io.dropwizard.Configuration;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import tut3c.dropwizard.resources.GamesResource;
 
-public class TicTacToeApplication extends Application<HelloWorldConfig> {
+public class TicTacToeApplication extends Application<Configuration> {
 
     public static void main(String[] args) throws Exception {
         new TicTacToeApplication().run(args);
@@ -12,16 +14,16 @@ public class TicTacToeApplication extends Application<HelloWorldConfig> {
 
     @Override
     public String getName() {
-        return "hello-world";
+        return "tut3c-dropwizard";
     }
 
     @Override
-    public void initialize(Bootstrap<HelloWorldConfig> bootstrap) {
+    public void initialize(Bootstrap<Configuration> bootstrap) {
         // nothing to do yet
     }
 
     @Override
-    public void run(HelloWorldConfig configuration, Environment environment) {
+    public void run(Configuration configuration, Environment environment) {
         environment.jersey().register(new GameTextPlainMessageBodyWriter());
 
         final GameHealthCheck healthCheck = new GameHealthCheck();

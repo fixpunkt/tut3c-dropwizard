@@ -1,6 +1,7 @@
-package com.example.helloworld;
+package tut3c.dropwizard;
 
 import org.junit.Test;
+import tut3c.dropwizard.model.Cell;
 
 import static org.junit.Assert.assertEquals;
 

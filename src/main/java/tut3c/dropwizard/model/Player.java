@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package tut3c.dropwizard.model;
 
 import java.net.URI;
 

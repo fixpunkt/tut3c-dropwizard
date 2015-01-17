@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'application'
 
-mainClassName = "com.example.helloworld.TicTacToeApplication"
+mainClassName = "tut3c.dropwizard.TicTacToeApplication"
 
 sourceCompatibility = 1.8
 

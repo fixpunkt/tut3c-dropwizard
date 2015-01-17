@@ -1,13 +1,12 @@
-package com.example.helloworld;
+package tut3c.dropwizard.model;
 
-import javax.ws.rs.core.UriInfo;
+import tut3c.dropwizard.exceptions.FieldAlreadySetException;
+import tut3c.dropwizard.exceptions.PlayerNotActiveException;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Game {

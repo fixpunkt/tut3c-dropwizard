@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package tut3c.dropwizard.exceptions;
 
 import io.dropwizard.jersey.errors.ErrorMessage;
 
