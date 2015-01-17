@@ -1,10 +1,7 @@
 package com.example.helloworld;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.*;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,29 +21,32 @@ public class GamesResource {
 
     @POST
     public Response createGame() {
-        Game game = new Game(nextGameId.incrementAndGet());
+        int id = nextGameId.incrementAndGet();
+        Game game = new Game(id);
         games.add(game);
-        URI gameUri = getGameUri(game);
+        URI gameUri = getGameUriBuilder(id).build();
         return Response.created(gameUri).build();
     }
 
-    private URI getGameUri(Game g) {
-        return uriInfo.getAbsolutePathBuilder().path(Long.toString(g.getId())).build();
+    private UriBuilder getGameUriBuilder(int id) {
+        return uriInfo.getAbsolutePathBuilder().path(Long.toString(id));
     }
 
     @Path("{id}")
-    public GameResource getGame(@PathParam("id") long id) {
+    public GameResource getGame(@PathParam("id") int id) {
         return games.stream()
                 .filter(game -> id == game.getId())
                 .findFirst()
-                .map(game -> new GameResource(game))
+                .map(game -> new GameResource(game, getGameUriBuilder(id)))
                 .orElse(null);
     }
 
     @GET
     public List<String> getGames() {
         return games.stream()
-                .map(this::getGameUri)
+                .map(Game::getId)
+                .map(this::getGameUriBuilder)
+                .map(uriBuilder -> uriBuilder.build())
                 .map(URI::toString)
                 .collect(Collectors.toList());
     }

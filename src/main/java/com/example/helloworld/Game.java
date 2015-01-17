@@ -1,11 +1,15 @@
 package com.example.helloworld;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class Game {
 
-	private long id;
+	private int id;
+	private List<Player> players;
 	private Cell[][] cells;
 
 	public Game(int id) {
@@ -13,7 +17,7 @@ public class Game {
 		reset();
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 	
@@ -22,6 +26,7 @@ public class Game {
 				new Cell[] { Cell.EMPTY, Cell.EMPTY, Cell.EMPTY },
 				new Cell[] { Cell.EMPTY, Cell.EMPTY, Cell.EMPTY },
 				new Cell[] { Cell.EMPTY, Cell.EMPTY, Cell.EMPTY }, };
+		players = Collections.synchronizedList(new ArrayList<Player>());
 	}
 
 	public Cell[][] getCells() {
@@ -42,6 +47,10 @@ public class Game {
 	public Cell getCell(int i, int j) {
 		return cells[i][j];
 	};
+
+	public List<Player> getPlayers() {
+		return players;
+	}
 	
 	@Override
 	public String toString() {
