@@ -2,10 +2,11 @@
 Ultimate Tic-Tac-Toe Challenge Darmstadt - Dropwizard (/ Atmosphere)
 
 Contributors:
-Falk Sippach
-Alexander Nickol
-Martin Steiger
-Jannik Jochem
+
+* Falk Sippach
+* Alexander Nickol
+* Martin Steiger
+* Jannik Jochem
 
 17.01.2015 - JUG-Darmstadt
 
