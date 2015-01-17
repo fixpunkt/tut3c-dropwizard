@@ -14,7 +14,7 @@ public class Game {
     private Cell[][] cells;
 
     public Game(int id) {
-        this.id = id;        
+        this.id = id;
         cells = new Cell[][]{
                 new Cell[]{Cell.EMPTY, Cell.EMPTY, Cell.EMPTY},
                 new Cell[]{Cell.EMPTY, Cell.EMPTY, Cell.EMPTY},
