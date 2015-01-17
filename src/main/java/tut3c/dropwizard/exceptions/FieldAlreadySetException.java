@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response;
 
 public class FieldAlreadySetException extends WebApplicationException {
 
-	public FieldAlreadySetException() {
-		super(Response.status(409).entity(new ErrorMessage(815, "Feld wurde bereits gesetzt. ")).type(MediaType.APPLICATION_JSON).build());
-	}
+    public FieldAlreadySetException() {
+        super(Response.status(409).entity(new ErrorMessage(666, "Field is already occupied.")).type(MediaType.APPLICATION_JSON).build());
+    }
 }

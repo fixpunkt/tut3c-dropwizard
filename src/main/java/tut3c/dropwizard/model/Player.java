@@ -1,7 +1,5 @@
 package tut3c.dropwizard.model;
 
-import java.net.URI;
-
 public class Player {
     private final String name;
     private final int id;

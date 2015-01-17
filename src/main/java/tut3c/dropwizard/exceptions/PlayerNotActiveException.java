@@ -7,9 +7,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 public class PlayerNotActiveException extends WebApplicationException {
-	
-	  public PlayerNotActiveException() {
-			super(Response.status(409).entity(new ErrorMessage(815, "Der gewünschte Zug ist nicht erlaubt, da ein anderer Spieler aktiv ist. ")).type(MediaType.APPLICATION_JSON).build());
-	  }
-	  
+
+    public PlayerNotActiveException() {
+        super(Response.status(409).entity(new ErrorMessage(667, "It's not your turn, butt-face!")).type(MediaType.APPLICATION_JSON).build());
+    }
+
 }
