@@ -1,16 +1,16 @@
 package com.example.helloworld;
 
-import javax.ws.rs.core.UriBuilder;
+import java.net.URI;
 
 public class Player {
     private final String name;
     private final int id;
-    private final UriBuilder uriBuilder;
+    private final URI uri;
 
-    public Player(String name, int id, UriBuilder uriBuilder) {
+    public Player(String name, int id, URI uri) {
         this.name = name;
         this.id = id;
-        this.uriBuilder = uriBuilder;
+        this.uri = uri;
     }
 
     public String getName() {

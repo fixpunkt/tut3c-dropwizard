@@ -4,16 +4,17 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
+import java.net.URI;
 import java.util.List;
 
 @Produces(MediaType.APPLICATION_JSON)
 public class PlayersResource {
     private final List<Player> players;
-    private final UriBuilder uriBuilder;
+    private final URI uri;
 
-    public PlayersResource(List<Player> players, UriBuilder uriBuilder) {
+    public PlayersResource(List<Player> players, URI uri) {
         this.players = players;
-        this.uriBuilder = uriBuilder;
+        this.uri = uri;
     }
 
     @POST
@@ -22,9 +23,9 @@ public class PlayersResource {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         int playerId = players.size() + 1;
-        UriBuilder playerUriBuilder = uriBuilder.fromPath(Integer.toString(playerId));
-        players.add(new Player(playerName, playerId, playerUriBuilder));
-        return Response.created(playerUriBuilder.build()).build();
+        URI playerUri = UriBuilder.fromUri(uri).path(Integer.toString(playerId)).build();
+        players.add(new Player(playerName, playerId, playerUri));
+        return Response.created(playerUri).build();
     }
 
     @GET

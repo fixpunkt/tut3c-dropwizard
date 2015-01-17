@@ -24,12 +24,8 @@ public class GamesResource {
         int id = nextGameId.incrementAndGet();
         Game game = new Game(id);
         games.add(game);
-        URI gameUri = getGameUriBuilder(id).build();
+        URI gameUri = getGameUri(id);
         return Response.created(gameUri).build();
-    }
-
-    private UriBuilder getGameUriBuilder(int id) {
-        return uriInfo.getAbsolutePathBuilder().fromPath(Long.toString(id));
     }
 
     @Path("{id}")
@@ -37,7 +33,7 @@ public class GamesResource {
         return games.stream()
                 .filter(game -> id == game.getId())
                 .findFirst()
-                .map(game -> new GameResource(game, getGameUriBuilder(id)))
+                .map(game -> new GameResource(game, getGameUri(id)))
                 .orElse(null);
     }
 
@@ -45,10 +41,13 @@ public class GamesResource {
     public List<String> getGames() {
         return games.stream()
                 .map(Game::getId)
-                .map(this::getGameUriBuilder)
-                .map(uriBuilder -> uriBuilder.build())
+                .map(this::getGameUri)
                 .map(URI::toString)
                 .collect(Collectors.toList());
+    }
+
+    private URI getGameUri(int id) {
+        return uriInfo.getAbsolutePathBuilder().path(Long.toString(id)).build();
     }
 
 }
