@@ -1,7 +1,5 @@
 package com.example.helloworld;
 
-import io.dropwizard.servlets.assets.ResourceNotFoundException;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -15,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Path("/games")
-@Produces("application/json")
+@Produces(MediaType.APPLICATION_JSON)
 public class GamesResource {
 
     @Context
@@ -26,9 +24,14 @@ public class GamesResource {
 
     @POST
     public Response createGame() {
-        Game g = new Game(nextGameId.incrementAndGet());
-        GameResource gameResource = new GameResource(g);
-        return Response.created(gameResource.getUri()).build();
+        Game game = new Game(nextGameId.incrementAndGet());
+        games.add(game);
+        URI gameUri = getGameUri(game);
+        return Response.created(gameUri).build();
+    }
+
+    private URI getGameUri(Game g) {
+        return uriInfo.getAbsolutePathBuilder().path(Long.toString(g.getId())).build();
     }
 
     @Path("{id}")
@@ -43,8 +46,8 @@ public class GamesResource {
     @GET
     public List<String> getGames() {
         return games.stream()
-                .map(Game::getId)
-                .map(id -> uriInfo.)
+                .map(this::getGameUri)
+                .map(URI::toString)
                 .collect(Collectors.toList());
     }
 
