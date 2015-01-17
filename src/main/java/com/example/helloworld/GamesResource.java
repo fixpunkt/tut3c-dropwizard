@@ -29,7 +29,7 @@ public class GamesResource {
     }
 
     private UriBuilder getGameUriBuilder(int id) {
-        return uriInfo.getAbsolutePathBuilder().path(Long.toString(id));
+        return uriInfo.getAbsolutePathBuilder().fromPath(Long.toString(id));
     }
 
     @Path("{id}")

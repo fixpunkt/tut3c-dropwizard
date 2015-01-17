@@ -22,7 +22,7 @@ public class PlayersResource {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         int playerId = players.size() + 1;
-        UriBuilder playerUriBuilder = uriBuilder.path(Integer.toString(playerId));
+        UriBuilder playerUriBuilder = uriBuilder.fromPath(Integer.toString(playerId));
         players.add(new Player(playerName, playerId, playerUriBuilder));
         return Response.created(playerUriBuilder.build()).build();
     }

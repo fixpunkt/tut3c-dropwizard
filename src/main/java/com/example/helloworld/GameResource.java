@@ -26,7 +26,12 @@ public class GameResource {
 
     @Path("players")
     public PlayersResource getPlayers() {
-        return new PlayersResource(game.getPlayers(), uriBuilder.path("players"));
+        return new PlayersResource(game.getPlayers(), uriBuilder.fromPath("players"));
+    }
+
+    @Path("moves")
+    public MovesResource getMoves() {
+        return new MovesResource(game);
     }
 
 }
