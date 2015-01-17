@@ -5,6 +5,8 @@ apply plugin: 'application'
 
 mainClassName = "com.example.helloworld.HelloWorldApplication"
 
+sourceCompatibility = 1.8
+
 repositories {
 	mavenCentral()
 }
