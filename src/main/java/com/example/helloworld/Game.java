@@ -46,7 +46,10 @@ public class Game {
 
 	public void setCell(int i, int j, Cell x) {
 		if (isSet(i, j)) {
-			throw new IllegalStateException();
+			throw new IllegalStateException("Cell already set!");
+		}
+		if (getNextPlayer() != x) {
+			throw new IllegalStateException("Wrong player!");
 		}
 		cells[i][j] = x;
 	}
