@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class Game {
 
 	private int id;
-	private List<Player> players;
+	private List<Player> players;	
 	private Cell[][] cells;
 
 	public Game(int id) {
@@ -59,10 +59,10 @@ public class Game {
 					return Arrays.stream(array).map(Object::toString)
 							.reduce((x, y) -> x + "|" + y).get();
 				});
-		String determinator = "+-+-+-+";
-		return (String) map.map(l -> determinator + "\n|" + l + "|")
+		String delimiter = "+-+-+-+";
+		return (String) map.map(l -> delimiter + "\n|" + l + "|")
 				.reduce((x, y) -> x + "\n" + y).get()
-				+ "\n" + determinator;
+				+ "\n" + delimiter;
 	}
 
 }
