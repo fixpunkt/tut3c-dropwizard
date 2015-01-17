@@ -7,14 +7,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
-@Path("/game")
 @Produces("application/json")
 public class GameResource {
 
     private final Game game;
-
-    @Context
-    private UriInfo uriInfo;
 
     public GameResource(Game g) {
         this.game = g;
@@ -25,7 +21,4 @@ public class GameResource {
         return "hello world";
     }
 
-    public URI getUri() {
-        return uriInfo.getBaseUri();
-    }
 }

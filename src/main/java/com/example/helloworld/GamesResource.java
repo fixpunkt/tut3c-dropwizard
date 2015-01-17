@@ -27,8 +27,8 @@ public class GamesResource {
     @POST
     public Response createGame() {
         Game g = new Game(nextGameId.incrementAndGet());
-        GameResource gameResource = new GameResource(g);
-        return Response.created(gameResource.getUri()).build();
+        URI gameUri = uriInfo.getAbsolutePathBuilder().path(Long.toString(g.getId())).build();
+        return Response.created(gameUri).build();
     }
 
     @Path("{id}")
@@ -44,7 +44,7 @@ public class GamesResource {
     public List<String> getGames() {
         return games.stream()
                 .map(Game::getId)
-                .map(id -> uriInfo.)
+                .map(id -> uriInfo.getBaseUriBuilder().path(Long.toString(id)).build().toString())
                 .collect(Collectors.toList());
     }
 
