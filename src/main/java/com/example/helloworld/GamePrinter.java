@@ -1,7 +1,5 @@
 package com.example.helloworld;
 
-import com.google.common.base.Joiner;
-
 /**
  * Created by msteiger on 17.01.2015.
  */

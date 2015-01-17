@@ -22,6 +22,8 @@ public class TicTacToeApplication extends Application<HelloWorldConfig> {
 
     @Override
     public void run(HelloWorldConfig configuration, Environment environment) {
+        environment.jersey().register(new GameTextPlainMessageBodyWriter());
+
         final GameHealthCheck healthCheck = new GameHealthCheck();
         environment.healthChecks().register("game", healthCheck);
         final GamesResource resource = new GamesResource();

@@ -19,6 +19,7 @@ public class GameResource {
     }
 
     @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
     public Game getGame() {
         return game;
     }
