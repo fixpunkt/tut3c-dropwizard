@@ -5,9 +5,6 @@ import javax.ws.rs.Path;
 
 @Path("/game")
 public class GameResource {
-    public GameResource(String template, String defaultName) {
-
-    }
 
     @GET
     public String getSaying() {
