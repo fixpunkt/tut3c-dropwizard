@@ -1,2 +1,7 @@
 # Gradle files
 .gradle
+
+/out
+*.iml
+*.ipr
+*.iws
