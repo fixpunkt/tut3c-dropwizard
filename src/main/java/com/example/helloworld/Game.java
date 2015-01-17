@@ -1,6 +1,7 @@
 package com.example.helloworld;
 
 import javax.ws.rs.core.UriInfo;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,7 +47,10 @@ public class Game {
 
 	public void setCell(int i, int j, Cell x) {
 		if (isSet(i, j)) {
-			throw new IllegalStateException();
+			throw new FieldAlreadySetException();
+		}
+		if (getNextPlayer() != x) {
+			throw new PlayerNotActiveException();
 		}
 		cells[i][j] = x;
 	}
