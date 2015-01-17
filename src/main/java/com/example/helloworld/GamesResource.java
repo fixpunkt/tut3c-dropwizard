@@ -19,6 +19,20 @@ public class GamesResource {
     private List<Game> games = Collections.synchronizedList(new ArrayList<Game>());
     private AtomicInteger nextGameId = new AtomicInteger(0);
 
+    @GET
+    @Path("/init")
+    public List<String> initTestData() {
+        games.clear();
+        games.add(new Game(1));
+        games.add(new Game(2));
+        games.add(new Game(3));
+        return games.stream()
+                .map(Game::getId)
+                .map(this::getGameUri)
+                .map(URI::toString)
+                .collect(Collectors.toList());
+    }
+
     @POST
     public Response createGame() {
         int id = nextGameId.incrementAndGet();

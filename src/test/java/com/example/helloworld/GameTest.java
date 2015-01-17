@@ -1,25 +1,25 @@
 package com.example.helloworld;
 
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class GameTest {
 	@Test
 	public void test() {
 		Game game = new Game(0);
-		Assert.assertEquals(0, game.getId());
+		assertEquals(0, game.getId());
 		
 		String emptyField = "+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+";
-		Assert.assertEquals(emptyField, game.toString());
+		assertEquals(emptyField, game.toString());
 		
 		game.setCell(0, 0, Cell.X);
 		game.setCell(1, 1, Cell.X);
 		game.setCell(2, 2, Cell.X);
 		game.setCell(2, 1, Cell.O);
 		
-		Assert.assertEquals(Cell.O, game.getCell(2, 1));
+		assertEquals(Cell.O, game.getCell(2, 1));
 		
-		Assert.assertEquals(
+		assertEquals(
 				"+-+-+-+\n|X| | |\n+-+-+-+\n| |X| |\n+-+-+-+\n| |O|X|\n+-+-+-+",
 				game.toString());
 		
@@ -29,12 +29,22 @@ public class GameTest {
 		} catch (IllegalStateException ex) {
 			exceptionThrown = true;
 		}
-		Assert.assertTrue(
+		assertTrue(
 				"Es müsste das setzen eines Feldes zum zweiten Mal zu einem Fehler führen!",
 				exceptionThrown);
 
 		game.reset();
-		Assert.assertEquals(emptyField, game.toString());
+		assertEquals(emptyField, game.toString());
+	}
+
+	@Test
+	public void testNextPlayer() {
+		Game game = new Game(1);
+		assertEquals(Cell.X, game.getNextPlayer());
+		game.setCell(0, 0, Cell.X);
+		assertEquals(Cell.O, game.getNextPlayer());
+		game.setCell(1, 0, Cell.O);
+		assertEquals(Cell.X, game.getNextPlayer());
 	}
 
 }

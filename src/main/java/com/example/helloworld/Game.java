@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Game {
@@ -20,13 +21,21 @@ public class Game {
 	public int getId() {
 		return id;
 	}
-	
+
 	public void reset() {
 		cells = new Cell[][] {
 				new Cell[] { Cell.EMPTY, Cell.EMPTY, Cell.EMPTY },
 				new Cell[] { Cell.EMPTY, Cell.EMPTY, Cell.EMPTY },
 				new Cell[] { Cell.EMPTY, Cell.EMPTY, Cell.EMPTY }, };
 		players = Collections.synchronizedList(new ArrayList<Player>());
+	}
+
+	public Cell getNextPlayer() {
+		return numberOfMoves() % 2 == 0 ? Cell.X : Cell.O;
+	}
+
+	private long numberOfMoves() {
+		return Arrays.stream(cells).flatMap(row -> Arrays.stream(row)).filter(cell -> cell != Cell.EMPTY).count();
 	}
 
 	public Cell[][] getCells() {
