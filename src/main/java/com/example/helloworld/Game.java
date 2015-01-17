@@ -73,7 +73,7 @@ public class Game {
 		String delimiter = "+-+-+-+";
 		return (String) map.map(l -> delimiter + "\n|" + l + "|")
 				.reduce((x, y) -> x + "\n" + y).get()
-				+ "\n" + delimiter;
+				+ "\n" + delimiter + "\n\nNext player: " + getNextPlayer();
 	}
 
 }

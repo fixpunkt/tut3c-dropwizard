@@ -26,11 +26,7 @@ public class GamesResource {
         games.add(new Game(1));
         games.add(new Game(2));
         games.add(new Game(3));
-        return games.stream()
-                .map(Game::getId)
-                .map(this::getGameUri)
-                .map(URI::toString)
-                .collect(Collectors.toList());
+        return getGames();
     }
 
     @POST
