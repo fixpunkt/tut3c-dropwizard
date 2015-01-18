@@ -19,8 +19,9 @@ Contributors:
     * `curl -v --data 'Alex' http://localhost:9000/games/1/players`
     * `curl -v --data 'Falk' http://localhost:9000/games/1/players`
 5. display the game state: `curl http://localhost:9000/games/1`
-6. make a move: `curl --data '{"column":1,"row":2,"mark":"X"}' http://localhost:9000/games/1/moves`
-7. repeat until game is finished
+6. watch for game state changes: `watch curl -S -s http://localhost:9000/gameevents`
+7. make a move: `curl --data '{"column":1,"row":2,"mark":"X"}' http://localhost:9000/games/1/moves`
+8. repeat until game is finished
 
 Chat protocol:
 
